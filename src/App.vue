@@ -279,6 +279,14 @@ section {
 }
 
 /*
+  The TL mark from the logo, on a white rounded square so its dark green
+  stands out from the green navbar (like the hero logo's white panel)
+*/
+.nav-logo {
+  border-radius: 8px;
+}
+
+/*
   Ensure logo and title are vertically centered in the navbar
 */
 .v-toolbar__title {
@@ -360,9 +368,9 @@ section {
           src="@/assets/logo-mark.png"
           alt=""
           contain
-          height="36"
-          width="36"
-          class="mx-2"
+          height="40"
+          width="40"
+          class="mx-2 nav-logo"
         />
         <div class="d-flex flex-column business-name">
           <div class="text-subtitle-2 font-weight-bold text-uppercase">Tru Lawns</div>
