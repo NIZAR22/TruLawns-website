@@ -60,6 +60,13 @@ export default {
 .hero-banner {
   padding-top: 64px; /* navbar height */
   background-color: var(--color-primary-dark);
+  overflow: hidden;
+}
+
+/* The photo and its fade round to different heights, which left a hairline
+   of unfaded photo at the bottom; clipping the last 2px hides it */
+.hero-banner .v-image {
+  margin-bottom: -2px;
 }
 
 @media (max-width: 960px) {
@@ -329,6 +336,8 @@ export default {
       The Tru Lawns Turf and Landscape logo set in a landscape photo, shown
       whole on phones; on wide screens the sky and path are trimmed so the
       headline still shows near the top of the screen
+      The gradient fades the lawn and path into the deep green (#0F4A30,
+      --color-primary-dark) of the headline area, starting below the logo
     -->
     <div class="hero-banner">
       <v-img
@@ -336,6 +345,7 @@ export default {
         alt="Tru Lawns Turf and Landscape"
         :aspect-ratio="1376 / 692"
         max-height="560"
+        gradient="to bottom, rgba(15, 74, 48, 0) 72%, rgba(15, 74, 48, 0.75) 90%, rgba(15, 74, 48, 1) 100%"
       />
     </div>
 
