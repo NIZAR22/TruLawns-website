@@ -334,8 +334,8 @@ export default {
     <!--
       LOGO BANNER
       The Tru Lawns Turf and Landscape logo set in a landscape photo, shown
-      whole on phones; on wide screens the sky and path are trimmed so the
-      headline still shows near the top of the screen
+      whole on phones; on wide screens it's trimmed (mostly sky, so the path
+      stays) so the headline still shows near the top of the screen
       The gradient fades the lawn and path into the deep green (#0F4A30,
       --color-primary-dark) of the headline area, starting below the logo
     -->
@@ -345,7 +345,8 @@ export default {
         alt="Tru Lawns Turf and Landscape"
         :aspect-ratio="1376 / 692"
         max-height="560"
-        gradient="to bottom, rgba(15, 74, 48, 0) 72%, rgba(15, 74, 48, 0.75) 90%, rgba(15, 74, 48, 1) 100%"
+        position="center 75%"
+        gradient="to bottom, rgba(15, 74, 48, 0) 80%, rgba(15, 74, 48, 0.4) 93%, rgba(15, 74, 48, 1) 100%"
       />
     </div>
 
