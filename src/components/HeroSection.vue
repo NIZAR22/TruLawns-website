@@ -323,15 +323,15 @@ export default {
           >
             <!--
               BUSINESS LOGO
-              The Tru Lawns wordmark on a white panel for brand recognition
+              The Tru Lawns Turf and Landscape logo on a white panel for brand recognition
               Uses contain to preserve aspect ratio
             -->
             <div class="hero-logo mb-8">
               <v-img
-                src="@/assets/logo.png"
-                alt="Tru Lawns"
+                src="@/assets/logo.jpg"
+                alt="Tru Lawns Turf and Landscape"
                 contain
-                :aspect-ratio="1705 / 379"
+                :aspect-ratio="800 / 235"
               />
             </div>
 
