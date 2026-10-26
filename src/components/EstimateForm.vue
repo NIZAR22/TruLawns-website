@@ -330,10 +330,10 @@ export default {
 
 /*
   Estimate form section background
-  White, between the light Reviews section and the Contact section
+  Light gray, between the white Reviews and Contact sections
 */
 .estimate-section {
-  background-color: var(--color-white);
+  background-color: var(--color-background);
 }
 
 /*

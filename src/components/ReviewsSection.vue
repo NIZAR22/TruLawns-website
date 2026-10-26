@@ -24,10 +24,10 @@ export default {
 
 /*
   Reviews section background
-  Light neutral background between the white Gallery and Estimate sections
+  White, between the light gray Services and Estimate sections
 */
 .reviews-section {
-  background-color: var(--color-background);
+  background-color: var(--color-white);
 }
 
 /*

@@ -7,7 +7,6 @@ A single-page website for Tru Lawns, a lawn care company in Palm Bay and Brevard
 - **Easy to Read**: Large text and buttons, colors chosen for WCAG AA contrast
 - **Responsive Layout**: Works on phones, tablets and desktops; phones and tablets get a menu button
 - **Services**: Lawn care, mulch, hedge and tree trimming, yard cleanups and sod, with the towns served
-- **Our Work Gallery**: Photos of properties Tru Lawns maintains, opening larger on click
 - **Customer Reviews**: Reviews from customers, with a link to the Google listing
 - **Free Estimate Form**: Sends requests by email through EmailJS, protected by reCAPTCHA
 - **Contact Information**: Phone, email, map with directions, and call buttons throughout
@@ -35,11 +34,10 @@ TruLawns Website/
 │   ├── apple-touch-icon.png # Phone home-screen icon
 │   └── og-image.png         # Link preview image (Facebook, text messages)
 ├── src/
-│   ├── assets/              # Logo, hero photo, gallery/ photos
+│   ├── assets/              # Logo, hero photo, services photo
 │   ├── components/          # One component per page section
 │   │   ├── HeroSection.vue
 │   │   ├── AboutServices.vue
-│   │   ├── GallerySection.vue
 │   │   ├── ReviewsSection.vue
 │   │   ├── EstimateForm.vue
 │   │   ├── ContactSection.vue
@@ -118,7 +116,7 @@ Services are in **`src/config/services.js`** (the services section and the estim
 ### Styling
 
 - **Colors**: The brand palette comes from the Tru Lawns logo green and the gold of their old site. Brand colors are set once in `src/plugins/vuetify.js` (`primary` green `#166C46`, `secondary` deep green `#0F4A30`, `accent` gold `#F9AE29`, `cta` button green `#187A4F`). `src/styles/theme.css` maps them to `--color-*` variables and adds the grays and neutrals (`--color-gray-dark` charcoal `#2F3539` for the footer, `--color-background` light gray `#ECEFEF` for alternating sections, `--color-light` off-white, `--color-border`, …). Components use the variables or Vuetify classes (`primary--text`, `color="cta"`), never hex values. Use `accent` for borders, stars and indicators, or with dark text: gold text on white is only 1.9:1, below WCAG AA. Check that a new color keeps text at 4.5:1 contrast or more.
-- **Photos**: Replace `src/assets/hero.jpg` (the wide photo behind the header and hero) or the photos in `src/assets/gallery/`.
+- **Photos**: Replace `src/assets/hero.jpg` (the wide photo behind the header and hero) or `src/assets/services.jpg` (the photo in the services section).
 - **Icons**: Material Design Icons 7.4.47 from jsDelivr, pinned with an integrity hash in `public/index.html`. To change the version, update both the URL and the hash.
 
 ## 📱 Responsive Design
@@ -159,7 +157,7 @@ The website is fully responsive with breakpoints:
 - **Link Previews**: Open Graph and Twitter tags with a 1200x630 preview image
 - **Structured Data**: Schema.org LandscapingBusiness (name, phone, email, address, service area, hours), generated from `src/config/business.js` at build time
 - **robots.txt and sitemap.xml**: Generated at build time from `siteUrl`
-- **Performance**: Only the Vuetify components in use are bundled; the gallery, estimate form and map load after the page shows
+- **Performance**: Only the Vuetify components in use are bundled; the estimate form and map load after the page shows
 
 ## 🚀 Deployment
 
@@ -173,7 +171,7 @@ The workflow reads the four form keys from repository variables (Settings > Secr
 
 ## 🔍 Performance Optimization
 
-- **Code Splitting**: Vue, Vuetify and app code in separate chunks for better caching; the gallery and estimate form in their own
+- **Code Splitting**: Vue, Vuetify and app code in separate chunks for better caching; the estimate form in its own
 - **Tree-shaking**: vuetify-loader bundles only the Vuetify components in use
 - **Lazy Loading**: The map loads when it nears the screen
 - **Minification**: JavaScript, CSS and HTML minified in production; `console.log` removed, errors kept

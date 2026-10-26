@@ -204,7 +204,7 @@ export default {
       <v-row align="center" class="mb-8">
         <!--
           SERVICE IMAGE COLUMN
-          A front yard TruLawns maintains: fresh mulch, trimmed shrubs, striped lawn
+          The TruLawns crew at a yard that won Oak Grove HOA Yard of the Month
           order-2 on mobile puts image below text for better flow
           Shown whole at its own 4:3 aspect ratio on every screen size
         -->
@@ -215,8 +215,8 @@ export default {
         >
           <v-card elevation="8" class="service-image-card">
             <v-img
-              src="@/assets/gallery/palm-front-yard.jpg"
-              alt="Freshly mowed front lawn with mulched beds and trimmed palms"
+              src="@/assets/services.jpg"
+              alt="Three Tru Lawns crew members in red company shirts on a freshly mowed lawn, with an Oak Grove HOA Yard of the Month sign"
               :aspect-ratio="4 / 3"
             >
               <!--

@@ -13,12 +13,11 @@ export default {
   name: 'App',
 
   // Register imported components so they can be used in template
-  // The gallery and estimate form load in their own files after the page
-  // shows: they're further down and bring the dialog and form components
+  // The estimate form loads in its own file after the page shows: it's
+  // further down and brings the form components
   components: {
     HeroSection,
     AboutServices,
-    GallerySection: () => import('./components/GallerySection.vue'),
     ReviewsSection,
     EstimateForm: () => import('./components/EstimateForm.vue'),
     ContactSection,
@@ -49,11 +48,6 @@ export default {
         id: 'services',
         title: 'Services',
         icon: 'mdi-mower'
-      },
-      {
-        id: 'gallery',
-        title: 'Our Work',
-        icon: 'mdi-image-multiple'
       },
       {
         id: 'reviews',
@@ -507,11 +501,6 @@ section {
       <!-- About/Services Section - Services offered and service area -->
       <section id="services">
         <AboutServices />
-      </section>
-
-      <!-- Gallery Section - Photos of properties TruLawns maintains -->
-      <section id="gallery">
-        <GallerySection />
       </section>
 
       <!-- Reviews Section - Customer reviews and a link to all of them -->
