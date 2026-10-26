@@ -69,10 +69,10 @@ export default {
 
 /*
   Footer background styling
-  Deep green, with a gold top edge
+  Charcoal gray, with a gold top edge
 */
 .footer-section {
-  background-color: var(--color-primary-dark) !important; /* Deep green */
+  background-color: var(--color-gray-dark) !important; /* Charcoal gray */
   border-top: 4px solid var(--color-accent);
   color: var(--color-light) !important;
   width: 100%;
@@ -81,14 +81,14 @@ export default {
 }
 
 /*
-  All footer text in off-white (9.8:1 on the deep green)
+  All footer text in off-white (11.8:1 on the charcoal gray)
 */
 .footer-section .white--text {
   color: var(--color-light) !important;
 }
 
 /*
-  Contact icons in gold (5.4:1 on the deep green)
+  Contact icons in gold (6.6:1 on the charcoal gray)
 */
 .footer-icon {
   color: var(--color-accent-on-dark) !important;
@@ -178,7 +178,7 @@ export default {
   <!--
     FOOTER COMPONENT
     Bottom of page with copyright, links, and contact info
-    Deep green background for visual closure
+    Charcoal gray background for visual closure
   -->
   <v-footer
     class="footer-section py-8"

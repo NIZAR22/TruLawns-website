@@ -14,8 +14,14 @@
   /* Brand gold: borders, underlines, stars, active indicators */
   --color-accent: var(--v-accent-base); /* #F9AE29 */
 
-  /* Gold reads as text on the deep green too (5.4:1 on --color-primary-dark) */
+  /* Gold reads as text on the dark colors too (5.4:1 on --color-primary-dark, 6.6:1 on --color-gray-dark) */
   --color-accent-on-dark: var(--v-accent-base);
+
+  /*
+    Brand grays, asked for by Tru Lawns: a cool charcoal slate that sets off
+    the greens and gold, for the footer (off-white text 11.8:1)
+  */
+  --color-gray-dark: #2F3539;
 
   /* Off-white for text on dark backgrounds and subtle surfaces */
   --color-light: #F7FAF8;
@@ -23,9 +29,13 @@
   /* Neutral dark color for body text and strong contrast */
   --color-dark: #171717;
 
-  /* Additional neutral surfaces */
+  /*
+    Additional neutral surfaces
+    --color-background is a light cool gray for the sections between the
+    white ones (green headings 5.6:1, grey--text text--darken-2 5.4:1)
+  */
   --color-white: #FFFFFF;
-  --color-background: #F7FAF8;
+  --color-background: #ECEFEF;
   --color-border: #DDE6E0;
 
   /* Faint green tint (the light green of their old site) for chips and hover backgrounds */

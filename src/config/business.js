@@ -16,7 +16,7 @@ module.exports = Object.freeze({
   phone: '3215497011',
   email: 'trulawnsfl@gmail.com',
   // Social profile; leave empty to hide the footer button
-  facebookUrl: '',
+  facebookUrl: 'https://www.facebook.com/p/TruLawns-Turf-And-Landscape-100054260558104/',
   // Google Business Profile (Maps listing with the reviews)
   // TODO: confirm with TruLawns; this searches Maps for the business by name and address
   googleReviewsUrl: 'https://www.google.com/maps/search/?api=1&query=Tru+Lawns+256+Wavecrest+Ave+NE+Palm+Bay+FL',
