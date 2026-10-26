@@ -55,6 +55,40 @@ export default {
 }
 
 /*
+  Logo banner at the top, below the fixed navbar
+*/
+.hero-banner {
+  padding-top: 64px; /* navbar height */
+  background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 960px) {
+  .hero-banner {
+    padding-top: 56px; /* navbar height on phones and tablets */
+  }
+}
+
+/*
+  Headline area under the banner: solid deep green, sized to its content
+  (the banner already carries the photo and logo)
+*/
+.hero-background {
+  background-image: none !important;
+  background-color: var(--color-primary-dark);
+  min-height: auto !important;
+}
+
+.hero-background .hero-overlay {
+  display: none;
+}
+
+.hero-background .hero-content {
+  min-height: auto;
+  padding-top: 48px;
+  padding-bottom: 56px;
+}
+
+/*
   Background image container
   Holds the hero background image with overlay
   Uses background-image for easy replacement
@@ -291,6 +325,21 @@ export default {
     class="hero-container pa-0 ma-0"
   >
     <!--
+      LOGO BANNER
+      The Tru Lawns Turf and Landscape logo set in a landscape photo, shown
+      whole on phones; on wide screens the sky and path are trimmed so the
+      headline still shows near the top of the screen
+    -->
+    <div class="hero-banner">
+      <v-img
+        src="@/assets/hero-banner.jpg"
+        alt="Tru Lawns Turf and Landscape"
+        :aspect-ratio="1376 / 692"
+        max-height="560"
+      />
+    </div>
+
+    <!--
       Overlay div for background image and dark overlay
       Creates contrast for white text to be readable
       Uses CSS background-image for easy replacement
@@ -318,20 +367,6 @@ export default {
             lg="8"
             class="text-center"
           >
-            <!--
-              BUSINESS LOGO
-              The light version of the Tru Lawns Turf and Landscape logo for brand recognition
-              Uses contain to preserve aspect ratio
-            -->
-            <div class="hero-logo mb-8">
-              <v-img
-                src="@/assets/logo-light.png"
-                alt="Tru Lawns Turf and Landscape"
-                contain
-                :aspect-ratio="800 / 235"
-              />
-            </div>
-
             <!--
               MAIN HEADING
               What the business does and where, for visitors and search engines
