@@ -90,6 +90,16 @@ export default {
      */
     callLabel () {
       return `Call us at ${formatPhone(this.phoneNumber)}`
+    },
+
+    /**
+     * The floating call button hides over the estimate and contact sections:
+     * both show the phone number with their own call button, and on phones
+     * it covered the form's submit button
+     * @returns {boolean} True when the floating call button should show
+     */
+    showFloatingCall () {
+      return !['estimate', 'contact'].includes(this.activeSection)
     }
   },
 
@@ -532,20 +542,24 @@ section {
       fixed keeps it visible while scrolling
       bottom and right position it in corner
       x-large makes it very visible for seniors
+      Hidden over the estimate and contact sections (see showFloatingCall)
     -->
-    <v-btn
-      fab
-      fixed
-      bottom
-      right
-      color="cta"
-      x-large
-      :href="'tel:' + phoneNumber"
-      :aria-label="callLabel"
-      class="floating-call-btn"
-      elevation="8"
-    >
-      <v-icon large>mdi-phone</v-icon>
-    </v-btn>
+    <v-fab-transition>
+      <v-btn
+        v-show="showFloatingCall"
+        fab
+        fixed
+        bottom
+        right
+        color="cta"
+        x-large
+        :href="'tel:' + phoneNumber"
+        :aria-label="callLabel"
+        class="floating-call-btn"
+        elevation="8"
+      >
+        <v-icon large>mdi-phone</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </v-app>
 </template>

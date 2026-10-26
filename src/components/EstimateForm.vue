@@ -372,6 +372,14 @@ export default {
 ::v-deep .v-messages__message {
   font-size: 16px !important;
   font-weight: 500 !important;
+  /* Vuetify's 12px line height is for its 12px text; at 16px, hints that
+     wrap on phones overlapped themselves */
+  line-height: 1.35 !important;
+}
+
+/* Let the hint area grow when a hint or error wraps onto a second line */
+::v-deep .v-messages {
+  min-height: 22px;
 }
 
 /*
@@ -411,6 +419,9 @@ export default {
 */
 ::v-deep .v-counter {
   font-size: 16px !important;
+  /* Same fix as the hints: Vuetify's 12px line height clipped the 16px digits */
+  line-height: 1.35 !important;
+  min-height: 22px;
 }
 
 /*
@@ -425,9 +436,42 @@ export default {
     padding: 24px 16px !important;
   }
 
-  /* Adjust submit button height on mobile */
+  /* Adjust submit button height on mobile; smaller text and padding so
+     "Request Free Estimate" doesn't run up against the edges */
   .submit-btn {
     min-height: 64px !important;
+    padding: 0 16px !important;
+  }
+
+  .submit-btn .text-h6 {
+    font-size: 1.125rem !important;
+    letter-spacing: 0 !important;
+  }
+}
+
+/* Small phones (320px wide), where the form is about 264px wide */
+@media (max-width: 400px) {
+  /* At 18px, "Email Address (Optional)" was cut off */
+  ::v-deep .v-label {
+    font-size: 16px !important;
+  }
+
+  /* Google's widget is a fixed 304px; scaling is the only way to fit it */
+  .captcha {
+    transform: scale(0.86);
+    transform-origin: left top;
+  }
+
+  /* Let the button text wrap onto two lines instead of running past the edges */
+  .submit-btn {
+    padding: 0 12px !important;
+    white-space: normal;
+  }
+
+  .submit-btn ::v-deep .v-btn__content {
+    flex: 1 1 auto;
+    white-space: normal;
+    line-height: 1.3;
   }
 }
 </style>
@@ -635,7 +679,7 @@ export default {
               -->
               <v-textarea
                 v-model="formData.message"
-                label="Tell us about your property (Optional)"
+                label="Property Details (Optional)"
                 outlined
                 :rules="messageRules"
                 prepend-inner-icon="mdi-message-text"
@@ -658,6 +702,7 @@ export default {
                 <vue-recaptcha
                   v-if="showCaptcha"
                   ref="recaptcha"
+                  class="captcha"
                   :sitekey="recaptchaSiteKey"
                   @render="onCaptchaRendered"
                   @verify="onCaptchaVerified"
