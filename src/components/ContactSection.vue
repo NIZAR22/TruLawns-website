@@ -19,7 +19,10 @@ export default {
 
     // Social media link
     // Facebook page for the business; the button is hidden while it's empty
-    facebookUrl: business.facebookUrl
+    facebookUrl: business.facebookUrl,
+
+    // Dialog visibility for map selection
+    showMapDialog: false
   }),
 
   computed: {
@@ -54,6 +57,53 @@ export default {
      */
     mapEmbedUrl () {
       return `https://www.google.com/maps?q=${encodeURIComponent(this.mapQuery)}&output=embed`
+    },
+
+    /**
+     * Detects iPhone, iPad and Mac, where Apple Maps links open the Maps app
+     * in any browser (iPads report themselves as Macintosh)
+     * @returns {boolean} True on Apple devices
+     */
+    hasAppleMaps () {
+      return /iPhone|iPad|iPod|Macintosh/.test(navigator.userAgent)
+    },
+
+    /**
+     * Gets Google Maps directions URL
+     */
+    googleMapsUrl () {
+      return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(this.mapQuery)}`
+    },
+
+    /**
+     * Gets Apple Maps directions URL
+     */
+    appleMapsUrl () {
+      return `https://maps.apple.com/?daddr=${encodeURIComponent(this.mapQuery)}`
+    }
+  },
+
+  methods: {
+    /**
+     * Opens directions to the office
+     * Apple devices get a choice of maps app; everyone else goes to Google Maps
+     */
+    getDirections () {
+      if (this.hasAppleMaps) {
+        this.showMapDialog = true
+      } else {
+        this.openMaps('google')
+      }
+    },
+
+    /**
+     * Opens the selected maps application
+     * noopener stops the new tab from getting a handle back to this page
+     */
+    openMaps (type) {
+      const url = type === 'apple' ? this.appleMapsUrl : this.googleMapsUrl
+      window.open(url, '_blank', 'noopener')
+      this.showMapDialog = false
     }
   }
 }
@@ -305,7 +355,7 @@ a:focus-visible .contact-item {
 
         <!--
           LOCATION
-          Where TruLawns is based, with a map; crews come to the customer
+          Where TruLawns is based, with a map and directions; crews come to the customer
         -->
         <v-col
           cols="12"
@@ -328,12 +378,13 @@ a:focus-visible .contact-item {
             <p class="text-body-1 grey--text text--darken-2 mt-2">
               Serving Palm Bay, Melbourne and nearby communities
             </p>
-            <!--
-              Embedded map on all viewports
-              title names the map for screen readers; loading="lazy" waits
-              until it's near the screen before loading Google Maps
-            -->
+            <!-- Map and directions -->
             <div class="mt-4">
+              <!--
+                Embedded map on all viewports
+                title names the map for screen readers; loading="lazy" waits
+                until it's near the screen before loading Google Maps
+              -->
               <iframe
                 title="Map showing where Tru Lawns is based in Palm Bay"
                 loading="lazy"
@@ -344,6 +395,58 @@ a:focus-visible .contact-item {
                 :src="mapEmbedUrl"
                 allowfullscreen
               ></iframe>
+
+              <!-- Directions button below the map -->
+              <v-btn
+                @click="getDirections"
+                color="primary"
+                outlined
+                large
+                class="mt-4"
+              >
+                <v-icon left>mdi-directions</v-icon>
+                Get Directions
+              </v-btn>
+
+              <!-- Maps app choice, shown on Apple devices -->
+              <v-dialog
+                v-model="showMapDialog"
+                max-width="300"
+              >
+                <v-card>
+                  <v-card-title class="text-h6">
+                    Choose Maps App
+                  </v-card-title>
+                  <v-card-text>
+                    <v-btn
+                      block
+                      color="primary"
+                      class="mb-3"
+                      @click="openMaps('google')"
+                    >
+                      <v-icon left>mdi-google-maps</v-icon>
+                      Google Maps
+                    </v-btn>
+                    <v-btn
+                      block
+                      color="primary"
+                      @click="openMaps('apple')"
+                    >
+                      <v-icon left>mdi-apple</v-icon>
+                      Apple Maps
+                    </v-btn>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      text
+                      @click="showMapDialog = false"
+                    >
+                      Cancel
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </div>
           </div>
         </v-col>
