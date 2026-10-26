@@ -158,18 +158,16 @@ export default {
 }
 
 /*
-  Logo panel
-  The logo is green lettering, so it sits on a white panel to stand out
-  from the dark green overlay
+  Logo
+  The light version of the logo (off-white with the gold sun) sits straight
+  on the dark green overlay; the shadow keeps it crisp over brighter spots
+  in the photo
 */
 .hero-logo {
   display: inline-block;
   width: 100%;
-  max-width: 440px;
-  padding: 20px 28px;
-  border-radius: 16px;
-  background-color: var(--color-white);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  max-width: 460px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
 }
 
 /*
@@ -257,10 +255,9 @@ export default {
     font-size: 1.125rem !important; /* 18px */
   }
 
-  /* Smaller logo panel on phones */
+  /* Smaller logo on phones */
   .hero-logo {
-    max-width: 300px;
-    padding: 14px 18px;
+    max-width: 320px;
   }
 
   /* Stack buttons vertically on mobile with spacing */
@@ -323,12 +320,12 @@ export default {
           >
             <!--
               BUSINESS LOGO
-              The Tru Lawns Turf and Landscape logo on a white panel for brand recognition
+              The light version of the Tru Lawns Turf and Landscape logo for brand recognition
               Uses contain to preserve aspect ratio
             -->
             <div class="hero-logo mb-8">
               <v-img
-                src="@/assets/logo.jpg"
+                src="@/assets/logo-light.png"
                 alt="Tru Lawns Turf and Landscape"
                 contain
                 :aspect-ratio="800 / 235"
