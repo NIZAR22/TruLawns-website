@@ -1,0 +1,93 @@
+/*
+  Tru Lawns brand theme, from the logo green and the gold of their old site
+  The brand colors come from the Vuetify theme in src/plugins/vuetify.js
+  (exposed as --v-*-base variables), so they're set in one place.
+  Components use these --color-* names rather than hex values.
+*/
+:root {
+  /* Primary brand color: darker shade of the logo green */
+  --color-primary: var(--v-primary-base); /* #166C46 */
+
+  /* Deep green for the footer and dark panels */
+  --color-primary-dark: var(--v-secondary-base); /* #0F4A30 */
+
+  /* Brand gold: borders, underlines, stars, active indicators */
+  --color-accent: var(--v-accent-base); /* #F9AE29 */
+
+  /* Gold reads as text on the deep green too (5.4:1 on --color-primary-dark) */
+  --color-accent-on-dark: var(--v-accent-base);
+
+  /* Off-white for text on dark backgrounds and subtle surfaces */
+  --color-light: #F7FAF8;
+
+  /* Neutral dark color for body text and strong contrast */
+  --color-dark: #171717;
+
+  /* Additional neutral surfaces */
+  --color-white: #FFFFFF;
+  --color-background: #F7FAF8;
+  --color-border: #DDE6E0;
+
+  /* Faint green tint (the light green of their old site) for chips and hover backgrounds */
+  --color-primary-tint: #DCEEE6;
+
+  /*
+    Semantic colors for interactive elements
+    Buttons use the brand green so white text stays readable (5.3:1);
+    links use the darker primary green (6.1:1 on the light background)
+  */
+  --color-button: var(--v-cta-base); /* #187A4F */
+  --color-button-hover: var(--v-cta-darken1);
+  --color-link: var(--v-primary-base);
+  --color-link-hover: var(--v-secondary-base);
+  --color-focus: var(--color-accent);
+}
+
+/* Light, neutral page background behind the sections */
+.v-application {
+  background-color: var(--color-background) !important;
+}
+
+/* White text on green call-to-action buttons */
+.v-btn.cta:not(.v-btn--outlined):not(.v-btn--text) {
+  color: var(--color-white) !important;
+}
+
+.v-btn.cta:not(.v-btn--outlined):not(.v-btn--text):hover {
+  background-color: var(--color-button-hover) !important;
+}
+
+/*
+  Visible keyboard focus everywhere (mouse clicks don't show it)
+  Gold with a dark ring, so it shows on light and green backgrounds alike
+*/
+.v-application :focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--color-dark);
+}
+
+/*
+  Short gold bar under section headings
+  Usage: add class="brand-underline" to a centered heading
+*/
+.brand-underline::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 16px auto 0;
+  border-radius: 2px;
+  background-color: var(--color-accent);
+}
+
+/* Visitors who ask for less motion get no animations or smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
